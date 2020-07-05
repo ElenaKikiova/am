@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
+import { ComponentsModule } from '../components/components.module';
 import { AddEditModalComponent } from '../components/add-edit-modal/add-edit-modal.component';
 
 @Component({
@@ -13,17 +14,63 @@ export class AllApplicationsComponent implements OnInit {
 
   public applications = [];
 
+  public englishLevels = [
+    "A1", "A2", "B1", "B2", "C1", "C2"
+  ]
+
+  public lastIndex = 0;
+
+  public application = {};
+
   constructor(
     public modalService: NgbModal
   ) { }
 
   ngOnInit(): void {
+    this.resetApplication();
+
+    this.applications = JSON.parse(localStorage.getItem("applications"));
+    if(this.applications == null) this.applications = [];
+  }
+
+
+  async resetApplication(){
+    this.application = {
+      index: this.lastIndex,
+      name: "",
+      email: "",
+      age: Number,
+      phone: "",
+      wayOfComm: 0,
+      englishLvl: 0,
+      available: "",
+      skillsAndCourses: "",
+      presentation: "",
+      fromHome: false
+    }
   }
 
   async addApplication(){
     
-    let refference = this.modalService.open(AddEditModalComponent);
+    const modalRef = this.modalService.open(AddEditModalComponent);
+    modalRef.componentInstance.application = this.application;
+    modalRef.componentInstance.englishLevels = this.englishLevels;
 
+    modalRef.result.then((result) => {
+      if(result != null){
+        this.application = result;
+        this.saveApplication();
+      }
+    });
+
+  }
+
+  async saveApplication(){
+    console.log(this.application);
+    this.applications.push(this.application);
+    this.lastIndex++;
+    this.resetApplication();
+    localStorage.setItem("applications", JSON.stringify(this.applications)); 
   }
 
 }

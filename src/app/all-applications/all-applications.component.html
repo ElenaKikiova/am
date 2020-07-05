@@ -12,11 +12,25 @@
     </thead>
     <tbody>
 
-      <tr *ngFor="let application in applications">
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
+      <tr *ngFor="let application of applications">
+        <td>
+          {{ application.index }}
+        </td>
+        <td>
+          {{ application.name }}
+        </td>
+        <td>
+          {{ application.email }}
+        </td>
+        <td>
+          {{ application.age }}
+        </td>
+        <td>
+          {{ application.phone }}
+        </td>
+        <td>
+          {{ englishLevels[application.englishLvl] }}
+        </td>
       </tr>
       
     </tbody>
