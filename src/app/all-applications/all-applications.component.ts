@@ -23,6 +23,15 @@ export class AllApplicationsComponent implements OnInit {
 
   public application = {};
 
+  public columns = [
+    { prop: 'index', name: 'ID' }, 
+    { prop: 'name', name: 'Name' }, 
+    { prop: 'email', name: 'Email' }, 
+    { prop: 'age', name: 'Age' }, 
+    { prop: 'phone', name: 'Phone Number' },
+    { prop: 'available', name: 'Available to Start' },
+  ];
+
   constructor(
     public modalService: NgbModal
   ) { }
@@ -32,6 +41,7 @@ export class AllApplicationsComponent implements OnInit {
 
     this.applications = JSON.parse(localStorage.getItem("applications"));
     if(this.applications == null) this.applications = [];
+
   }
 
 
@@ -68,7 +78,7 @@ export class AllApplicationsComponent implements OnInit {
 
   async saveApplication(){
     console.log(this.application);
-    let index = this.applications.findIndex((a) => a.index == this.application.index);
+    let index = this.applications.findIndex((a) => a.index == this.application["index"]);
     if(index == -1){
       this.applications.push(this.application);
       this.lastIndex++;
@@ -79,6 +89,14 @@ export class AllApplicationsComponent implements OnInit {
     this.resetApplication();
     localStorage.setItem("applications", JSON.stringify(this.applications)); 
   }
+
+  async onActivate(event) {
+    (event.type === 'click') && event.cellElement.blur();
+    if(event.type == 'click') {
+      this.showApplication(event.row);
+    }
+    
+}
 
   async showApplication(application){
     this.application = application;
@@ -99,7 +117,7 @@ export class AllApplicationsComponent implements OnInit {
   }
 
   async deleteApplication(){
-    let index = this.applications.findIndex((a) => a.index = this.application.index);
+    let index = this.applications.findIndex((a) => a.index = this.application["index"]);
     this.applications.splice(index, 1);
     localStorage.setItem("applications", JSON.stringify(this.applications)); 
     this.resetApplication();
