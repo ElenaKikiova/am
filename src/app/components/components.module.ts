@@ -6,10 +6,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AddEditModalComponent } from './add-edit-modal/add-edit-modal.component';
+import { ViewModalComponent } from './view-modal/view-modal.component';
 
 @NgModule({
   declarations: [
-    AddEditModalComponent
+    AddEditModalComponent,
+    ViewModalComponent
   ],
   imports: [
     CommonModule,
@@ -19,10 +21,12 @@ import { AddEditModalComponent } from './add-edit-modal/add-edit-modal.component
     ReactiveFormsModule
   ],
   exports: [
-    AddEditModalComponent
+    AddEditModalComponent,
+    ViewModalComponent
   ],
   bootstrap: [
-    AddEditModalComponent
+    AddEditModalComponent,
+    ViewModalComponent
   ],
 })
 export class ComponentsModule { }

@@ -12,7 +12,10 @@
     </thead>
     <tbody>
 
-      <tr *ngFor="let application of applications">
+      <tr 
+        *ngFor="let application of applications"
+        (click)="showApplication(application)">
+
         <td>
           {{ application.index }}
         </td>
@@ -48,6 +51,6 @@
 
 <button 
   class="btn" id="add-button"
-  (click)="addApplication()">
+  (click)="addEditApplication()">
   +
 </button>

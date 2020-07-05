@@ -6,6 +6,11 @@ import { AllApplicationsComponent } from './all-applications/all-applications.co
 
 const routes: Routes = [
   {
+    path: "",
+    redirectTo: "allApplications",
+    pathMatch: "full"
+  },
+  {
     path: "allApplications",
     component: AllApplicationsComponent
   }

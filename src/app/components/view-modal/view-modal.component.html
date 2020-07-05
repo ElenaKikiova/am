@@ -1,0 +1,60 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">
+    Add application
+  </h4>
+</div>
+<div class="modal-body">
+
+
+  <p>
+    <b>Name</b> {{ application.name }}
+  </p>
+
+  <p>
+    <b>Email</b> {{ application.email }}
+  </p>
+
+  <p>
+    <b>Age</b> {{ application.age }}
+  </p>
+
+  <p>
+    <b>Phone</b> {{ application.phone }}
+  </p>
+
+  <p>
+    <b>Preferred Way of Communication</b> {{ application.wayOfComm == '0' ? 'Phone': 'Email' }}
+  </p>
+
+  <p>
+    <b>English level</b> {{ englishLevels[application.englishLvl] }}
+  </p>
+
+  <p>
+    <b>Available to Start</b> {{ application.available | date: 'yyyy-MM-dd'}}
+  </p>
+
+  <p>
+    <b>Technical Skills and Courses</b>
+  </p>
+  <p>
+    {{ application.skillsAndCourses }}
+  </p>
+
+  <p>
+    <b>Short Personal Presentation</b>
+  </p>
+  <p>
+    {{ application.presentation }}
+  </p>
+
+  <div class="alert alert-primary" *ngIf="application.fromHome">
+    Study from home
+  </div>
+
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-danger" (click)="activeModal.close('delete')">Delete</button>
+  <button type="button" class="btn btn-outline-success" (click)="activeModal.close('edit')">Edit</button>
+  <button type="button" class="btn btn-outline-dark" (click)="activeModal.close(null)">Close</button>
+</div>

@@ -4,6 +4,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { ComponentsModule } from '../components/components.module';
 import { AddEditModalComponent } from '../components/add-edit-modal/add-edit-modal.component';
+import { ViewModalComponent } from '../components/view-modal/view-modal.component';
 
 @Component({
   selector: 'app-all-applications',
@@ -50,7 +51,7 @@ export class AllApplicationsComponent implements OnInit {
     }
   }
 
-  async addApplication(){
+  async addEditApplication(){
     
     const modalRef = this.modalService.open(AddEditModalComponent);
     modalRef.componentInstance.application = this.application;
@@ -67,10 +68,42 @@ export class AllApplicationsComponent implements OnInit {
 
   async saveApplication(){
     console.log(this.application);
-    this.applications.push(this.application);
-    this.lastIndex++;
+    let index = this.applications.findIndex((a) => a.index = this.application.index);
+    if(index == -1){
+      this.applications.push(this.application);
+      this.lastIndex++;
+    }
+    else{
+      this.applications[index] = this.application;
+    }
     this.resetApplication();
     localStorage.setItem("applications", JSON.stringify(this.applications)); 
   }
+
+  async showApplication(application){
+    this.application = application;
+
+    const modalRef = this.modalService.open(ViewModalComponent);
+    modalRef.componentInstance.application = this.application;
+    modalRef.componentInstance.englishLevels = this.englishLevels;
+
+    modalRef.result.then((result) => {
+      if(result == "edit"){
+        this.addEditApplication();
+      }
+      else if(result == "delete"){
+        this.deleteApplication();
+      }
+    });
+
+  }
+
+  async deleteApplication(){
+    let index = this.applications.findIndex((a) => a.index = this.application.index);
+    this.applications.splice(index, 1);
+    localStorage.setItem("applications", JSON.stringify(this.applications)); 
+  }
+
+
 
 }
