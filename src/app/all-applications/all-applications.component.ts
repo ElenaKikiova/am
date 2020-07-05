@@ -68,7 +68,7 @@ export class AllApplicationsComponent implements OnInit {
 
   async saveApplication(){
     console.log(this.application);
-    let index = this.applications.findIndex((a) => a.index = this.application.index);
+    let index = this.applications.findIndex((a) => a.index == this.application.index);
     if(index == -1){
       this.applications.push(this.application);
       this.lastIndex++;
@@ -102,6 +102,7 @@ export class AllApplicationsComponent implements OnInit {
     let index = this.applications.findIndex((a) => a.index = this.application.index);
     this.applications.splice(index, 1);
     localStorage.setItem("applications", JSON.stringify(this.applications)); 
+    this.resetApplication();
   }
 
 
