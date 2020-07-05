@@ -1,0 +1,39 @@
+<div class="card col-lg-8 col-md-10 col-xs-12 mx-auto my-3 p-2">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name </th>
+        <th scope="col">Email</th>
+        <th scope="col">Age </th>
+        <th scope="col">Phone Number </th>
+        <th scope="col">English Level </th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr *ngFor="let application in applications">
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      
+    </tbody>
+  </table>
+
+  <div 
+    *ngIf="applications.length == 0"
+    class="alert alert-warning">
+
+    No applications yet
+
+  </div>
+
+</div>
+
+<button 
+  class="btn" id="add-button"
+  (click)="addApplication()">
+  +
+</button>

@@ -1,0 +1,19 @@
+#add-button{
+  position: fixed;
+  bottom: 0.75rem;
+  right: 0.75rem;
+
+  width: 4rem;
+  height: 4rem;
+  font-family: Verdana;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  background-color: #10b933;
+  color: white;
+  text-align: center;
+
+}
+
+#add-button:hover{
+  background-color: #21cf44 !important;
+}
