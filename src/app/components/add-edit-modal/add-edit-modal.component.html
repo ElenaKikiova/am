@@ -66,14 +66,17 @@
     <!-- -------------------------------------------------------- -->
     <div>
       <label>Preferred Way of Communication<span class="required">*</span></label>
-      <label for="wayOfComm"> 
+      <div class="d-flex">
+        <label for="wayOfComm"> 
+          Phone
+        </label>
         <input name="wayOfComm" formControlName="wayOfComm" type="radio" value="0" class="form-control">
-        Phone
-      </label>
-      <label for="wayOfComm"> 
-        <input name="wayOfComm" formControlName="wayOfComm" type="radio" value="1" class="form-control">
-        Email
-      </label>
+          
+        <label for="wayOfComm"> 
+          <input name="wayOfComm" formControlName="wayOfComm" type="radio" value="1" class="form-control">
+          Email
+        </label>
+      </div>
     </div>
 
     <!-- -------------------------------------------------------- -->
@@ -90,7 +93,7 @@
     <div class="input-group">
     <input 
         formControlName="available" type="date" class="form-control" 
-        value="{{ application.available}}">
+        [value]="application.available">
     </div>
 
     <!-- -------------------------------------------------------- -->
@@ -106,7 +109,8 @@
     <!-- -------------------------------------------------------- -->
     <div>
       <label for="fromHome"> 
-        <input name="fromHome" formControlName="fromHome" type="checkbox" class="form-control">
+        <input name="fromHome" formControlName="fromHome" type="checkbox" class="form-control"
+          [checked]="application.fromHome">
         Study from home
       </label>
     </div>

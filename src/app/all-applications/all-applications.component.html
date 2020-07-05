@@ -1,60 +1,23 @@
-<div class="card col-lg-8 col-md-10 col-xs-12 mx-auto my-3 p-2">
+<div class="card col-lg-10 col-md-12 mx-auto my-3 p-2">
 
   <ngx-datatable 
-  (activate)="onActivate($event)"
+    (activate)="onActivate($event)"
     [rows]="applications" [columns]="columns">
 
   </ngx-datatable>
-
-  <!-- <ngx-datatable class="table">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Name </th>
-        <th scope="col">Email</th>
-        <th scope="col">Age </th>
-        <th scope="col">Phone Number </th>
-        <th scope="col">English Level </th>
-      </tr>
-    </thead>
-    <tbody>
-
-      <tr 
-        *ngFor="let application of applications"
-        (click)="showApplication(application)">
-
-        <td>
-          {{ application.index }}
-        </td>
-        <td>
-          {{ application.name }}
-        </td>
-        <td>
-          {{ application.email }}
-        </td>
-        <td>
-          {{ application.age }}
-        </td>
-        <td>
-          {{ application.phone }}
-        </td>
-        <td>
-          {{ englishLevels[application.englishLvl] }}
-        </td>
-      </tr>
-      
-    </tbody>
-  </ngx-datatable> -->
-
+  
   <div 
     *ngIf="applications.length == 0"
     class="alert alert-warning">
 
-    No applications yet
+    Add your first application by clicking the + button
 
   </div>
 
 </div>
+
+
+
 
 <button 
   class="btn" id="add-button"
