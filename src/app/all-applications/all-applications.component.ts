@@ -79,6 +79,9 @@ export class AllApplicationsComponent implements OnInit {
         this.application = result;
         this.saveApplication();
       }
+    }, (reason) => {
+      console.log(reason)
+      this.resetApplication();
     });
 
   }

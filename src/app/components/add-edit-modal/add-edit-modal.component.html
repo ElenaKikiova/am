@@ -1,6 +1,6 @@
 <div class="modal-header">
   <h4 class="modal-title" id="modal-basic-title">
-    Add application
+    {{ application.title != "" ? 'Edit application' : 'Add application'}}
   </h4>
 </div>
 <div class="modal-body">
