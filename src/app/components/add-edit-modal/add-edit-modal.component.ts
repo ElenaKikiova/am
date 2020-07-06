@@ -7,7 +7,7 @@ import { Validators, FormControl, ValidationErrors, FormGroupDirective, FormBuil
 @Component({
   selector: 'app-add-edit-modal',
   templateUrl: './add-edit-modal.component.html',
-  styleUrls: ['./add-edit-modal.component.scss']
+  styleUrls: ['./add-edit-modal.component.css']
 })
 export class AddEditModalComponent implements OnInit {
 

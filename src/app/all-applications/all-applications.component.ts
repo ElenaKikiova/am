@@ -9,7 +9,7 @@ import { ViewModalComponent } from '../components/view-modal/view-modal.componen
 @Component({
   selector: 'app-all-applications',
   templateUrl: './all-applications.component.html',
-  styleUrls: ['./all-applications.component.scss']
+  styleUrls: ['./all-applications.component.css']
 })
 export class AllApplicationsComponent implements OnInit {
 
@@ -41,6 +41,7 @@ export class AllApplicationsComponent implements OnInit {
 
     this.applications = JSON.parse(localStorage.getItem("applications"));
     if(this.applications == null) this.applications = [];
+    this.applications = [...this.applications];
 
   }
 
@@ -59,6 +60,12 @@ export class AllApplicationsComponent implements OnInit {
       presentation: "",
       fromHome: false
     }
+  }
+
+  async applyChanges(){
+    this.resetApplication();
+    this.applications = [...this.applications]; // refresh ngx datatable
+    localStorage.setItem("applications", JSON.stringify(this.applications)); 
   }
 
   async addEditApplication(){
@@ -86,8 +93,7 @@ export class AllApplicationsComponent implements OnInit {
     else{
       this.applications[index] = this.application;
     }
-    this.resetApplication();
-    localStorage.setItem("applications", JSON.stringify(this.applications)); 
+    this.applyChanges();
   }
 
   async onActivate(event) {
@@ -119,8 +125,7 @@ export class AllApplicationsComponent implements OnInit {
   async deleteApplication(){
     let index = this.applications.findIndex((a) => a.index = this.application["index"]);
     this.applications.splice(index, 1);
-    localStorage.setItem("applications", JSON.stringify(this.applications)); 
-    this.resetApplication();
+    this.applyChanges();
   }
 
 

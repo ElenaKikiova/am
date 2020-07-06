@@ -67,13 +67,12 @@
     <div>
       <label>Preferred Way of Communication<span class="required">*</span></label>
       <div class="d-flex">
-        <label for="wayOfComm"> 
+        <label for="phone"> 
+          <input name="wayOfComm" id="phone" formControlName="wayOfComm" type="radio" value="0" class="form-control"> 
           Phone
         </label>
-        <input name="wayOfComm" formControlName="wayOfComm" type="radio" value="0" class="form-control">
-          
-        <label for="wayOfComm"> 
-          <input name="wayOfComm" formControlName="wayOfComm" type="radio" value="1" class="form-control">
+        <label for="email"> 
+          <input name="wayOfComm" id="email" formControlName="wayOfComm" type="radio" value="1" class="form-control">
           Email
         </label>
       </div>
@@ -109,7 +108,7 @@
     <!-- -------------------------------------------------------- -->
     <div>
       <label for="fromHome"> 
-        <input name="fromHome" formControlName="fromHome" type="checkbox" class="form-control"
+        <input name="fromHome" id="fromHome" formControlName="fromHome" type="checkbox" class="form-control"
           [checked]="application.fromHome">
         Study from home
       </label>

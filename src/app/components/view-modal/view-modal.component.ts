@@ -8,7 +8,7 @@ import { AddEditModalComponent } from '../add-edit-modal/add-edit-modal.componen
 @Component({
   selector: 'app-view-modal',
   templateUrl: './view-modal.component.html',
-  styleUrls: ['./view-modal.component.scss']
+  styleUrls: ['./view-modal.component.css']
 })
 export class ViewModalComponent implements OnInit {
 
